@@ -2,7 +2,14 @@
 # it should include the board
 #  - its lists
 #    - the cards for each list
-json.partial!("board", board: @board, lists: @lists)
+json.(list, :id, :title, :board_id, :ord, :created_at, :updated_at)
+
+cards ||= nil
+unless cards.nil?
+  json.cards(cards) do |card|
+    json.partial!("api/cards/card", card: card)
+  end
+end
 
   
   # json.partial! 'comments/comments', comments: @message.comments

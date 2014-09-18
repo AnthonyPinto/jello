@@ -2,7 +2,8 @@
 # it should include the board
 #  - its lists
 #    - the cards for each list
-json.partial!("board", board: @board, lists: @lists)
-
+json.array! @lists do |list|
+  json.partial!("list", list: list)
+end
   
   # json.partial! 'comments/comments', comments: @message.comments

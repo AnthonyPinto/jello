@@ -2,7 +2,5 @@
 # it should include the board
 #  - its lists
 #    - the cards for each list
-json.partial!("board", board: @board, lists: @lists)
-
-  
-  # json.partial! 'comments/comments', comments: @message.comments
+json.partial!("item", item: @item)
+# json.partial! 'comments/comments', comments: @message.comments
