@@ -1,0 +1,15 @@
+  <div 
+    class="row panel panel-primary card-title" 
+    data-card-id="<%= card.escape("id") %>">
+    
+    <div class="col-xs-8">
+      <h4><%= card.escape("title") %></h4>
+    </div>
+    <div class="col-xs-2">
+      <span 
+        class="x-card glyphicon glyphicon-remove" 
+        data-card-id="<%= card.get("id") %>">
+      </span>
+    </div>
+  </div>
+</div>

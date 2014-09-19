@@ -3,16 +3,17 @@
 TrelloClone.Models.List = Backbone.Model.extend({
   urlRoot: "api/lists",
   
-  // lists: function () {
-  //   this._lists = this._lists ||
-  //     new TrelloClone.Collections.TodoComments()
-  //   return this._lists
-  // }
-  //
-  // parse: function (response) {
-  //   if (response.lists) {
-  //     this.lists().set(response.lists, { parse: true });
-  //     delete response.lists;
-  //   }
-  // }
+  cards: function () {
+    this._cards = this._cards ||
+      new TrelloClone.Collections.Cards();
+    return this._cards;
+  },
+
+  parse: function (response) {
+    if (response.cards) {
+      this.cards().set(response.cards, { parse: true });
+      delete response.cards;
+    }
+    return response
+  }
 });

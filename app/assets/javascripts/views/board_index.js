@@ -2,7 +2,7 @@
 /*global JST*/
 
 TrelloClone.Views.BoardsIndex = Backbone.CompositeView.extend({
-  template: JST["boards/index"],
+  template: JST["boards/boards_index"],
   
   
   initialize: function () {

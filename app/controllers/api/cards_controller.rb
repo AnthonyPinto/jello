@@ -11,6 +11,12 @@ module Api
         render json: @card.errors.full_messages, status: :unprocessable_entity
       end
     end
+    
+    def destroy
+      @card = current_user.cards.find(params[:id])
+      @card.destroy
+      render json: {}
+    end
 
     def update
       @card = Card.find(params[:id])

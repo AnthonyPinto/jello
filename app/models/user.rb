@@ -19,6 +19,18 @@ class User < ActiveRecord::Base
   has_many :boards
   has_many :card_assignments
   has_many :board_memberships
+  
+  has_many( 
+    :lists,
+    through: :boards,
+    source: :lists
+  )
+    
+  has_many( 
+    :cards,
+    through: :lists,
+    source: :cards
+  )
 
   attr_reader :password
   after_initialize :ensure_session_token

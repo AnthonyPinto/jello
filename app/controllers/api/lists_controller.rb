@@ -13,7 +13,7 @@ module Api
     end
 
     def destroy
-      @list = List.find(params[:id])
+      @list = current_user.lists.find(params[:id])
       @list.destroy
       render json: {}
     end

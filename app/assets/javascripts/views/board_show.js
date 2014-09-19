@@ -2,12 +2,12 @@
 /*global JST*/
 
 TrelloClone.Views.BoardShow = Backbone.CompositeView.extend({
-  template: JST["boards/show"],
+  template: JST["boards/board_show"],
   
   events: {
     "click button.new-list" : "createList",
-    'submit form': 'createList',
-    "click span.glyphicon-remove": "destroyList"
+    'submit form.new-list': 'createList',
+    "click span.x-list": "destroyList"
   },
   
   initialize: function () {
@@ -18,6 +18,7 @@ TrelloClone.Views.BoardShow = Backbone.CompositeView.extend({
     
     this.model.lists().each(this.addList.bind(this));
   },
+  
   
   destroyList: function (event) {
     $icon = $(event.currentTarget)
@@ -71,13 +72,4 @@ TrelloClone.Views.BoardShow = Backbone.CompositeView.extend({
     this.attachSubviews();
     return this;
   }
-  
-  // renderLists: function () {
-  //   var that = this;
-  //   this.model.lists().each( function (list) {
-  //     var view = new TrelloClone.Views.ListBoardShow({model: list})
-  //     debugger
-  //     this.addSubview;
-  //   }.bind(this));
-  // }
 });
