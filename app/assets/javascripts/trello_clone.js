@@ -1,3 +1,5 @@
+/*global TrelloClone*/
+
 window.TrelloClone = {
   Models: {},
   Collections: {},
