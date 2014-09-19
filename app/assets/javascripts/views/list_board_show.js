@@ -12,7 +12,8 @@ TrelloClone.Views.ListBoardShow = Backbone.CompositeView.extend({
     "click span.x-form": "closeForm",
     "click a.new-card" : "openForm",
     "click button.new-card" : "submitForm",
-    "click div.card-title" : "openCard"
+    "click div.card-title" : "openCard",
+    "click button.close-modal" : "removeModal"
   },
   
   initialize: function () {
@@ -29,11 +30,20 @@ TrelloClone.Views.ListBoardShow = Backbone.CompositeView.extend({
     var card = this.model.cards().get(id);
     var cardModal = new TrelloClone.Views.CardModal({model: card});
     this.addSubview(".modal-wrapper", cardModal);
-    this.$el.find(".modal").modal("show")
+    this.$el.find(".modal").modal("show");
+  },
+  
+  removeModal: function () {
+    _.each(
+      this.subviews(".modal-wrapper"), 
+      function (subview) {
+        this.removeSubview(".list-wrapper", subview); 
+      }.bind(this)
+    );
   },
   
   closeCard: function (event) {
-    event.currentTarget
+    event.currentTarget;
   },
   
   openForm: function (event) {
@@ -61,6 +71,7 @@ TrelloClone.Views.ListBoardShow = Backbone.CompositeView.extend({
   },
   
   destroyCard: function (event) {
+    event.stopPropagation();
     var $icon = $(event.currentTarget);
     var id = $icon.data("card-id");
     var card = this.model.cards().get(id);
