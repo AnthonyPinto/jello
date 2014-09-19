@@ -5,6 +5,10 @@ TrelloClone.Views.ListBoardShow = Backbone.CompositeView.extend({
   template: JST["lists/list_index_show"],
   formTemplate: JST["cards/card_form"],
   
+  tagName: "li",
+  
+  className:'list',
+  
   events: {
     // "click button.new-card" : "createCard",
     // 'submit form': 'createCard',
